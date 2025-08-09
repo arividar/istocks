@@ -1,0 +1,57 @@
+{
+  // Press F5 to start Next.js in debug mode or to attach.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Next.js (web)",
+      "program": "${workspaceFolder}/web/node_modules/next/dist/bin/next",
+      "args": [
+        "dev",
+        "-p",
+        "3000"
+      ],
+      "runtimeArgs": [
+        "--inspect=9229"
+      ],
+      "cwd": "${workspaceFolder}/web",
+      "env": {
+        "NEXT_TELEMETRY_DISABLED": "1"
+      },
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Next.js (9229)",
+      "port": 9229,
+      "restart": true,
+      "cwd": "${workspaceFolder}/web",
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Open Browser (http://localhost:3000)",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Next.js + Browser",
+      "configurations": [
+        "Launch Next.js (web)",
+        "Open Browser (http://localhost:3000)"
+      ]
+    }
+  ]
+}
